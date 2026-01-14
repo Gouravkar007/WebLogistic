@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-LogisticApplication<Logistic>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.Parthi.Logistic.LogisticApplication",
+            "projectName": "Logistic",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

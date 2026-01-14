@@ -1,0 +1,29 @@
+<configuration>
+
+    <!-- Define a property for log directory -->
+    <property name="LOG_DIR" value="logs" />
+
+    <!-- File Appender with rolling policy -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/parthilog.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Rotate daily and keep 30 days -->
+            <fileNamePattern>${LOG_DIR}/parthilog-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%c] [%M:] [%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="org.hibernate" level="OFF" />
+    <logger name="jakarta.persistence" level="OFF" />
+    <logger name="javax.persistence" level="OFF" />
+
+    <!-- Root logger configuration -->
+    <root level="INFO">
+        <appender-ref ref="FILE" />
+    </root>
+
+</configuration>
