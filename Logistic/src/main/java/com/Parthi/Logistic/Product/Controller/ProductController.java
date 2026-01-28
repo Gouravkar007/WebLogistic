@@ -1,4 +1,4 @@
-package com.Parthi.Logistic.Product.controller;
+package com.Parthi.Logistic.Product.Controller;
 
 import java.util.Collections;
 import java.util.List;
@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.Parthi.Logistic.Product.service.ProductService;
+import com.Parthi.Logistic.Product.Service.ProductService;
 import com.Parthi.Logistic.Product.model.Product;
-
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
