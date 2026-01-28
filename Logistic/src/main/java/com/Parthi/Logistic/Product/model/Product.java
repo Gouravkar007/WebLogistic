@@ -1,93 +1,65 @@
 package com.Parthi.Logistic.Product.model;
 
+import java.time.LocalDate;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
+@Entity
+@Table(name = "products")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Product {
     
-
+    
+    @NotBlank(message = "Product id cannot be empty")
+    @Id
+    @Column(name = "product_id", length = 30)
     private String id;
 
+    @NotBlank(message = "Category is required")
+    @Column(name = "product_type")
     private String category;
 
+    @NotBlank(message = "Product name is required")
+    @Column(name = "product_name")
     private String name;
 
+    @NotBlank(message = "Description is required")
+    @Column(name = "description")
     private String description;
 
+    @Positive(message = "Cost price must be greater than 0")
+    @Column(name = "cost_price")
     private double costPrice = 0;
 
+    @Positive(message = "Selling price must be greater than 0")
+    @Column(name = "actual_selling_price")
     private double sellingPrice = 0;
 
-    private double mrp; 
-
-
-    public Product() {
-    }
-
-    public Product(String id, String category, String name, String description, double costPrice, double sellingPrice, double mrp) {
-        this.id = id;
-        this.category = category;
-        this.name = name;
-        this.description = description;
-        this.costPrice = costPrice;
-        this.sellingPrice = sellingPrice;
-        this.mrp = mrp;
-    }
-
-    public String getId() {
-        return this.id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getCategory() {
-        return this.category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getCostPrice() {
-        return this.costPrice;
-    }
-
-    public void setCostPrice(double costPrice) {
-        this.costPrice = costPrice;
-    }
-
-    public double getSellingPrice() {
-        return this.sellingPrice;
-    }
-
-    public void setSellingPrice(double sellingPrice) {
-        this.sellingPrice = sellingPrice;
-    }
-
-    public double getMrp() {
-        return this.mrp;
-    }
-
-    public void setMrp(double mrp) {
-        this.mrp = mrp;
-    }
+    @Positive(message = "MRP must be greater than 0")
+    @Column(name = "calculated_selling_price")
+    private double mrp;
     
+    @Column(name = "checkin_date")
+    LocalDate stockInDate;
+
+    
+
+  
 
 }
 
