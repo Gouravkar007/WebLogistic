@@ -1,8 +1,10 @@
-package com.Parthi.Logistic.customer.controller;
+package com.parthi.logistic.customer.controller;
 
 import org.springframework.web.bind.annotation.RestController;
-import com.Parthi.Logistic.customer.model.Customer;
-import com.Parthi.Logistic.customer.service.CustomerService;
+
+import com.parthi.logistic.customer.model.Customer;
+import com.parthi.logistic.customer.service.CustomerService;
+
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.ResponseEntity;

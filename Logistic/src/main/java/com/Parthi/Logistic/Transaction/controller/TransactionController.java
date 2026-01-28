@@ -1,4 +1,4 @@
-package com.Parthi.Logistic.Transaction.controller;
+package com.parthi.logistic.Transaction.controller;
 
 public class TransactionController {
 

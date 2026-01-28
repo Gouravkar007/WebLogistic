@@ -1,9 +1,9 @@
-package com.Parthi.Logistic.payment.service;
+package com.parthi.logistic.payment.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.Parthi.Logistic.payment.repository.PaymentRepository;
+import com.parthi.logistic.payment.repository.PaymentRepository;
 
 
 public class PaymentService {

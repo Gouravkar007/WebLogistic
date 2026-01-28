@@ -1,4 +1,4 @@
-package com.Parthi.Logistic.Transaction.model;
+package com.parthi.logistic.Transaction.model;
 
 import java.time.LocalDate;
 

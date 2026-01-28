@@ -1,4 +1,4 @@
-package com.Parthi.Logistic.customer.controller;
+package com.parthi.logistic.customer.controller;
 
 import java.time.LocalDate;
 

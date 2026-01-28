@@ -1,4 +1,4 @@
-package com.Parthi.Logistic.customer.repository;
+package com.parthi.logistic.customer.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.Parthi.Logistic.customer.model.Customer;
+import com.parthi.logistic.customer.model.Customer;
 
 public class CustomerRepository {
     

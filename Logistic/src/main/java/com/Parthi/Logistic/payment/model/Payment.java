@@ -6,12 +6,12 @@
  * @author Moumita Chatterjee
  * @since 2026-01-25
  */
-package com.Parthi.Logistic.payment.model;
+package com.parthi.logistic.payment.model;
 
 import java.time.LocalDate;
 
-import com.Parthi.Logistic.Product.model.Product;
-import com.Parthi.Logistic.customer.model.Customer;
+import com.parthi.logistic.customer.model.Customer;
+import com.parthi.logistic.product.model.Product;
 
 public class Payment {
     private String paymentId;

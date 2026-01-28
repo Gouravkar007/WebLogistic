@@ -1,4 +1,4 @@
-package com.Parthi.Logistic.common;
+package com.parthi.logistic.common;
 
 import java.util.Locale;
 import java.util.Scanner;

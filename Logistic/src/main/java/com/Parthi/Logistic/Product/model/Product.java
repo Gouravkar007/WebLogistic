@@ -1,4 +1,4 @@
-package com.Parthi.Logistic.Product.model;
+package com.parthi.logistic.product.model;
 
 import java.time.LocalDate;
 

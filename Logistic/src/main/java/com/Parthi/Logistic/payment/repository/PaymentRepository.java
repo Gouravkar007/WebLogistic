@@ -1,4 +1,4 @@
-package com.Parthi.Logistic.payment.repository;
+package com.parthi.logistic.payment.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.Parthi.Logistic.payment.model.Payment;
+import com.parthi.logistic.payment.model.Payment;
 
 public class PaymentRepository {
     private static final Logger logger = LoggerFactory.getLogger(PaymentRepository.class);

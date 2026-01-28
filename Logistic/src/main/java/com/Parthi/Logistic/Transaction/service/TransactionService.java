@@ -1,4 +1,4 @@
-package com.Parthi.Logistic.Transaction.service;
+package com.parthi.logistic.Transaction.service;
 
 public class TransactionService {
 

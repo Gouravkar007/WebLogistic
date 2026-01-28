@@ -1,4 +1,4 @@
-package com.Parthi.Logistic.Product.Controller;
+package com.parthi.logistic.product.controller;
 
 import java.util.Collections;
 import java.util.List;
@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.Parthi.Logistic.Product.Service.ProductService;
-import com.Parthi.Logistic.Product.model.Product;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import com.parthi.logistic.product.model.Product;
+import com.parthi.logistic.product.service.ProductService;
 
 @RestController
 public class ProductController {

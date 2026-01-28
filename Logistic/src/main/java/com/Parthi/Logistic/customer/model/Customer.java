@@ -6,7 +6,7 @@
  * @since 2026-01-16
  */
 
-package com.Parthi.Logistic.customer.model;
+package com.parthi.logistic.customer.model;
 
 import java.time.LocalDate;
 

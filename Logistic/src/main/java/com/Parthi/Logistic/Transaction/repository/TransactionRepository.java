@@ -1,4 +1,4 @@
-package com.Parthi.Logistic.Transaction.repository;
+package com.parthi.logistic.Transaction.repository;
 
 public class TransactionRepository {
 
