@@ -1,28 +1,33 @@
-package com.parthi.logistic.Transaction.model;
+package com.parthi.logistic.transaction.model;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-
-
+@Entity
+@Table(name = "transactions")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
+
 public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "txn_id")
-    private int id;
+    private Integer id;
     @Column(name = "invoice")
     private String invoice;
     @Column(name = "particulars")
@@ -35,7 +40,7 @@ public class Transaction {
     private String paymentMode;
     @Column(name = "description")
     private String description;
-    @Column(name = "Amount")
+    @Column(name = "amount")
     private double amount;
     @Column(name = "txn_date")
     LocalDate transactionDate;

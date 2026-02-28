@@ -1,0 +1,23 @@
+package com.parthi.logistic.common.model;
+
+import java.time.OffsetDateTime;
+import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+public class ValidationErrorResponse {
+    private List<String> message;
+    @DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
+    private OffsetDateTime date;
+
+    public ValidationErrorResponse(List<String> message) {
+        this.message = message;
+        this.date = OffsetDateTime.now();
+    }
+}

@@ -10,54 +10,36 @@ package com.parthi.logistic.customer.model;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+@Entity
+@Table(name = "customers")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 
 public class Customer {
-    @NotBlank(message = "Id can't be blank")
-    private String id;
-    
-    @NotBlank(message = "Number can't be blank")
+    @Id
+    @Column(name = "contact_number", length = 15)
     private String customerNumber;
-    
-    @NotBlank(message = "Name can't be blank")
+    @Column(name = "customer_name")
     private String name;
-  
-    @NotBlank(message = "Address can't be blank")
+    @Column(name = "address")
     private String address;
-   
-    // NotBlank is used for String
-    @NotNull(message = "DOB can't be blank")
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
-    
-    private double depositeAmount;
-
-    //Empty constructor
-    public Customer() {
-    }
-
-    //constructor with all feilds
-    public Customer(String id, String customerNumber, String name, String address, LocalDate dateOfBirth,
-            double depositeAmount) {
-        this.id = id;
-        this.customerNumber = customerNumber;
-        this.name = name;
-        this.address = address;
-        this.dateOfBirth = dateOfBirth;
-        this.depositeAmount = depositeAmount;
-    }
-
-    //Getter and setter's
-    public String getId() {
-        return this.id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    @Column(name = "deposit_amount")
+    private double depositeAmount = 0;
 
     public String getCustomerNumber() {
         return this.customerNumber;

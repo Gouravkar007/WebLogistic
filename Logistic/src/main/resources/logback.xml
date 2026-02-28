@@ -17,13 +17,22 @@
             <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%c] [%M:] [%L] - %msg%n</pattern>
         </encoder>
     </appender>
+
+    <appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd'T'HH:mm:ss.SSS'Z'}] [%-5p] %X{customId} [%C{0}: %M %3L]: %m%n</pattern>
+		</encoder>
+
+	</appender>
     <logger name="org.hibernate" level="OFF" />
-    <logger name="jakarta.persistence" level="OFF" />
+    <logger name="javax.persistence" level="OFF" />
     <logger name="javax.persistence" level="OFF" />
 
     <!-- Root logger configuration -->
     <root level="INFO">
-        <appender-ref ref="FILE" />
+        <!--<appender-ref ref="FILE" /> -->
+        <appender-ref ref="STDOUT" />
     </root>
 
 </configuration>

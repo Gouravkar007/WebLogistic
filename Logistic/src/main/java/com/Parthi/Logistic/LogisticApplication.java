@@ -13,5 +13,4 @@ public class LogisticApplication {
 		System.err.println("hello-parthi");
 	}
 
-
 }

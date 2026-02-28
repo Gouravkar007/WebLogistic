@@ -1,26 +1,33 @@
-package com.parthi.logistic.product.controller;
+package com.parthi.logistic.product.Controller;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.parthi.logistic.common.model.SuccessResponse;
+import com.parthi.logistic.product.Service.ProductService;
 import com.parthi.logistic.product.model.Product;
-import com.parthi.logistic.product.service.ProductService;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 public class ProductController {
+
+    static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
     ProductService productService;
@@ -34,15 +41,14 @@ public class ProductController {
      *         an empty list is returned.
      */
     @GetMapping("/product/getall")
-    public ResponseEntity<List<Product>> getProducts() {
+    @ResponseBody
+    public ResponseEntity<List<Product>> getAllProducts() {
 
+        logger.info("Request recived from all products");
         List<Product> products = productService.getProducts();
 
-        if (products.isEmpty()) {
-            return ResponseEntity.ok(Collections.emptyList());
-        }
-
-        return ResponseEntity.ok(products);
+        logger.info("Product recived successfully");
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
     /**
@@ -54,17 +60,16 @@ public class ProductController {
      * @return Returns the product if found, otherwise returns a not found message
      */
     @GetMapping("/product/{productId}")
-    public ResponseEntity<?> getProductById(@PathVariable String productId) {
+    @ResponseBody
+    public ResponseEntity<Product> getProductById(
+            @PathVariable String productId) {
+
+        logger.info("Request received for retrieve product");
 
         Product product = productService.getProduct(productId);
 
-        if (product == null) {
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body("Product with id " + productId + " not found");
-        }
-
-        return ResponseEntity.ok(product);
+        logger.info("Product recived successfully");
+        return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
 
     /**
@@ -75,14 +80,13 @@ public class ProductController {
      * @return Returns the status message of the add operation
      */
     @PostMapping("/product/add")
-    public ResponseEntity<String> addProduct(@Valid @RequestBody Product product) {
+    @ResponseBody
+    public ResponseEntity<SuccessResponse> addProduct(@Valid @RequestBody Product product) {
+        logger.info("Request received for Add product");
+        SuccessResponse response = productService.addProduct(product);
+        logger.info("Product added successfully");
 
-        String response = productService.addProduct(product);
-
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(response);
-
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     /**
@@ -91,28 +95,47 @@ public class ProductController {
      *
      * @param product Product details that need to be updated
      * @return Returns the status message of the update operation
+     * @throws Exception
      */
-    @PostMapping("/product/update")
-    public ResponseEntity<String> updateProduct(@Valid @RequestBody Product
-    product) {
+    // @PostMapping("/product/update")
+    // public ResponseEntity<SuccessResponse> updateProduct(@Valid @RequestBody
+    // String productId, LocalDate chekoutDate,
+    // Double sellingPrice) throws Exception {
 
-    String response = productService.updateProduct(product, 0);
+    // String response =
 
-    if ("Product not found".equals(response)) {
-    return ResponseEntity
-    .status(HttpStatus.NOT_FOUND)
-    .body(response);
+    // if ("Product not found".equals(response)) {
+    // return ResponseEntity
+    // .status(HttpStatus.NOT_FOUND)
+    // .body(response);
+    // }
+
+    // if ("Failed to update product".equals(response)) {
+    // return ResponseEntity
+    // .status(HttpStatus.INTERNAL_SERVER_ERROR)
+    // .body(response);
+    // }
+
+    // return ResponseEntity
+    // .status(HttpStatus.OK)
+    // .body(response);
+    // }
+
+    @PostMapping("/product/return/vendor/{productId}")
+    @ResponseBody
+    public ResponseEntity<String> returnToVendor(
+            @PathVariable String productId,
+            @RequestParam String stockoutDate,
+            @RequestParam String paymentMode) throws Exception {
+
+        logger.info("Request received for return to vendor | id={}", productId);
+
+        LocalDate date = LocalDate.parse(stockoutDate);
+
+        String response = productService.returnToVendor(productId, date, paymentMode);
+
+        logger.info("Return to vendor response: {}", response);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
-    if ("Failed to update product".equals(response)) {
-    return ResponseEntity
-    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-    .body(response);
-    }
-
-    return ResponseEntity
-    .status(HttpStatus.OK)
-    .body(response);
-    }
-
 }
